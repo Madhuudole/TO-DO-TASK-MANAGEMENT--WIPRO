@@ -144,52 +144,10 @@ name	VARCHAR	Category name
 📌 Purpose:
 Helps group tasks (e.g., Work, Personal, Urgent).
 
-🔗 Relationships Explained
-🔹 TEAM → USERS
+![ER](https://github.com/user-attachments/assets/5aee4ca0-aa2d-4967-ae09-cbce93ca97d4)
 
-One-to-Many (1:M)
+  
 
-One team can have many users
-
-Each user belongs to exactly one team
-
-📌 Implemented using:
-
-USERS.team_id → TEAM.team_id
-
-🔹 USERS → TASKS
-
-One-to-Many (1:M)
-
-One user can create multiple tasks
-
-Each task is assigned to one user
-
-📌 Implemented using:
-
-TASKS.user_id → USERS.user_id
-
-🔹 CATEGORIES → TASKS
-
-One-to-Many (1:M)
-
-One category can have many tasks
-
-Each task belongs to one category
-
-
-
-🔄MAPPING
-
-@OneToMany → Team → Users
-
-@ManyToOne → User → Team
-
-@OneToMany → User → Tasks
-
-@ManyToOne → Task → User
-
-@ManyToOne → Task → Category
 
 
 
