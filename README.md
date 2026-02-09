@@ -97,24 +97,6 @@ For a complete list of available schematics (such as `components`, `directives`,
 ng generate --help
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:
@@ -122,10 +104,204 @@ For end-to-end (e2e) testing, run:
 ```bash
 ng e2e
 ```
+🧩 Entities & Attributes
+1️⃣ TEAM Table
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Represents a group or team of users.
 
-## Additional Resources
+Attribute	Type	Description
+team_id	INT (PK)	Unique identifier for the team
+name	VARCHAR	Team name
+created_at	DATETIME	Team creation timestamp
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+📌 Purpose:
+Organizes users into teams (useful for small teams or organizations).
+
+2️⃣ USERS Table
+
+Stores user account information.
+
+Attribute	Type	Description
+user_id	INT (PK)	Unique user ID
+name	VARCHAR	User’s name
+email	VARCHAR	User email
+password	STRING	Encrypted password
+team_id	INT (FK)	References TEAM
+
+📌 Purpose:
+Each user belongs to one team, but a team can have many users.
+
+3️⃣ TASKS Table
+
+Stores task details created by users.
+
+Attribute	Type	Description
+task_id	INT (PK)	Unique task ID
+description	TEXT	Task description
+status	ENUM	Completed / Pending
+due_date	DATE	Task deadline
+created_at	DATETIME	Task creation time
+user_id	INT (FK)	Assigned user
+category_id	INT (FK)	Task category
+
+📌 Purpose:
+Tracks all tasks, their status, deadlines, and ownership.
+
+4️⃣ CATEGORIES Table
+
+Defines task categories.
+
+Attribute	Type	Description
+category_id	INT (PK)	Category ID
+name	VARCHAR	Category name
+
+📌 Purpose:
+Helps group tasks (e.g., Work, Personal, Urgent).
+
+🔗 Relationships Explained
+🔹 TEAM → USERS
+
+One-to-Many (1:M)
+
+One team can have many users
+
+Each user belongs to exactly one team
+
+📌 Implemented using:
+
+USERS.team_id → TEAM.team_id
+
+🔹 USERS → TASKS
+
+One-to-Many (1:M)
+
+One user can create multiple tasks
+
+Each task is assigned to one user
+
+📌 Implemented using:
+
+TASKS.user_id → USERS.user_id
+
+🔹 CATEGORIES → TASKS
+
+One-to-Many (1:M)
+
+One category can have many tasks
+
+Each task belongs to one category
+
+
+
+🔄MAPPING
+
+@OneToMany → Team → Users
+
+@ManyToOne → User → Team
+
+@OneToMany → User → Tasks
+
+@ManyToOne → Task → User
+
+@ManyToOne → Task → Category
+
+
+
+dirs = [
+    "backend/src/main/java/com/example/taskmanager/controller",
+    "backend/src/main/java/com/example/taskmanager/service",
+    "backend/src/main/java/com/example/taskmanager/repository",
+    "backend/src/main/java/com/example/taskmanager/model",
+    "backend/src/main/resources",
+    "frontend/src/app/components/task-list",
+    "frontend/src/app/components/task-form",
+    "frontend/src/app/services",
+    "frontend/src/app/models",
+    "database",
+    "docs/Screenshots"
+]
+
+for d in dirs:
+    os.makedirs(os.path.join(base, d), exist_ok=True)
+
+readme = dedent("""
+# ✅ Task Management Application
+
+A team-based Task Management Application that allows users to create, manage, and track tasks efficiently.
+
+## 📌 Project Description
+This application helps individuals and small teams organize tasks by status, category, and due date.
+Angular provides the frontend UI, Spring Boot exposes REST APIs, and Docker + Azure support cloud deployment.
+
+## 🎯 Key Objectives
+- Improve productivity and task organization
+- Track pending and completed tasks
+- Support team-based task management
+
+## ⚙️ Core Functionalities
+- Create, edit, delete tasks
+- Mark tasks as completed or pending
+- Filter tasks by status
+- Sort tasks by due date
+- Categorize tasks
+
+## 🛠️ Technology Stack
+Frontend: Angular  
+Backend: Spring Boot, Spring Data JPA  
+Database: H2 / PostgreSQL  
+DevOps: Docker, Azure Container Instances  
+
+## 🗄️ Database Entities
+- Team
+- Users
+- Tasks
+- Categories
+
+## 🔌 REST APIs
+- GET /api/tasks
+- POST /api/tasks
+- PUT /api/tasks/{id}
+- DELETE /api/tasks/{id}
+- PATCH /api/tasks/{id}/status
+
+## 🐳 Docker
+Run using:
+docker-compose up --build
+
+
+📦 Download Your Final Repository
+
+👉 Download the complete repository ZIP
+
+You can:
+
+Download this ZIP
+
+Extract it
+
+Open the folder
+
+Push directly to GitHub using:
+
+git init
+git add .
+git commit -m "Initial commit - Task Management Application"
+git branch -M main
+git remote add origin <your-github-repo-url>
+git push -u origin main
+
+🧠 Repo Matches Your ER Diagram
+
+Your ER diagram logic is fully reflected:
+
+TEAM
+
+One team → many users
+
+USERS
+
+Belongs to one team
+
+One user → many tasks
+
 
