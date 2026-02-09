@@ -83,20 +83,6 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:
@@ -207,101 +193,6 @@ Each task belongs to one category
 
 
 
-dirs = [
-    "backend/src/main/java/com/example/taskmanager/controller",
-    "backend/src/main/java/com/example/taskmanager/service",
-    "backend/src/main/java/com/example/taskmanager/repository",
-    "backend/src/main/java/com/example/taskmanager/model",
-    "backend/src/main/resources",
-    "frontend/src/app/components/task-list",
-    "frontend/src/app/components/task-form",
-    "frontend/src/app/services",
-    "frontend/src/app/models",
-    "database",
-    "docs/Screenshots"
-]
 
-for d in dirs:
-    os.makedirs(os.path.join(base, d), exist_ok=True)
-
-readme = dedent("""
-# ✅ Task Management Application
-
-A team-based Task Management Application that allows users to create, manage, and track tasks efficiently.
-
-## 📌 Project Description
-This application helps individuals and small teams organize tasks by status, category, and due date.
-Angular provides the frontend UI, Spring Boot exposes REST APIs, and Docker + Azure support cloud deployment.
-
-## 🎯 Key Objectives
-- Improve productivity and task organization
-- Track pending and completed tasks
-- Support team-based task management
-
-## ⚙️ Core Functionalities
-- Create, edit, delete tasks
-- Mark tasks as completed or pending
-- Filter tasks by status
-- Sort tasks by due date
-- Categorize tasks
-
-## 🛠️ Technology Stack
-Frontend: Angular  
-Backend: Spring Boot, Spring Data JPA  
-Database: H2 / PostgreSQL  
-DevOps: Docker, Azure Container Instances  
-
-## 🗄️ Database Entities
-- Team
-- Users
-- Tasks
-- Categories
-
-## 🔌 REST APIs
-- GET /api/tasks
-- POST /api/tasks
-- PUT /api/tasks/{id}
-- DELETE /api/tasks/{id}
-- PATCH /api/tasks/{id}/status
-
-## 🐳 Docker
-Run using:
-docker-compose up --build
-
-
-📦 Download Your Final Repository
-
-👉 Download the complete repository ZIP
-
-You can:
-
-Download this ZIP
-
-Extract it
-
-Open the folder
-
-Push directly to GitHub using:
-
-git init
-git add .
-git commit -m "Initial commit - Task Management Application"
-git branch -M main
-git remote add origin <your-github-repo-url>
-git push -u origin main
-
-🧠 Repo Matches Your ER Diagram
-
-Your ER diagram logic is fully reflected:
-
-TEAM
-
-One team → many users
-
-USERS
-
-Belongs to one team
-
-One user → many tasks
 
 
