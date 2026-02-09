@@ -90,7 +90,9 @@ For end-to-end (e2e) testing, run:
 ```bash
 ng e2e
 ```
-🧩 Entities & Attributes
+
+**🧩 Entities & Attributes**
+
 1️⃣ TEAM Table
 
 Represents a group or team of users.
@@ -144,9 +146,12 @@ name	VARCHAR	Category name
 📌 Purpose:
 Helps group tasks (e.g., Work, Personal, Urgent).
 
+**ER DIAGRAM**
+
 ![ER](https://github.com/user-attachments/assets/5aee4ca0-aa2d-4967-ae09-cbce93ca97d4)
 
   
+
 
 
 
