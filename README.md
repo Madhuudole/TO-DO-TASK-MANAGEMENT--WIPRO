@@ -37,7 +37,7 @@ Frontend	Angular
 Backend	Spring Boot, Spring Data JPA
 Database	H2 / PostgreSQL
 DevOps	Docker, Azure Container Instances
-🧱 System Architecture
+System Architecture
 Angular UI → Spring Boot REST API → Database
 
 🗄️ Database Design
@@ -190,6 +190,7 @@ Each task belongs to one category
 @ManyToOne → Task → User
 
 @ManyToOne → Task → Category
+
 
 
 
